@@ -3,8 +3,8 @@ Spotlight Program
 
 # ROADMAP
 ## ML
-- [Image Restoration](https://github.com/JoTang/JotangRecrument/tree/main/%23%201%20ML#task-3---image-restoration)
-- [Pacman](https://github.com/JoTang/JotangRecrument/tree/main/%23%201%20ML#task-5---pacman)
+- [Image Restoration](https://github.com/JoTang/JotangRecrument/blob/main/ML/README.md#task-3---image-restoration)
+- [Pacman](https://github.com/JoTang/JotangRecrument/blob/main/ML/README.md#task-5---pacman)
 
 ## MLSys
 
