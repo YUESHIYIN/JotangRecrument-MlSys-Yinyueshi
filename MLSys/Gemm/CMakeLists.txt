@@ -31,12 +31,6 @@ target_link_libraries(gemm_example PRIVATE
     CUDA::cublas
 )
 
-target_compile_options(gemm_example PRIVATE
-    $<$<COMPILE_LANGUAGE:CUDA>:--expt-relaxed-constexpr>
-    $<$<COMPILE_LANGUAGE:CUDA>:--expt-extended-lambda>
-    $<$<COMPILE_LANGUAGE:CUDA>:--use_fast_math>
-)
-
 if(NOT DEFINED CUDA_ARCHITECTURES)
     message(FATAL_ERROR "Must specify CUDA architectures via command line! Use: cmake -DCUDA_ARCHITECTURES=\"75;80;86\" ...")
 endif()

@@ -1,3 +1,5 @@
 task_cuda/.venv
 task_cuda/CUDA_Test.egg-info
 task_cuda/CUDA_Test.cpython-310-x86_64-linux-gnu.so
+**/build/
+**/.cache/

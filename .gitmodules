@@ -1,6 +1,6 @@
-[submodule "triton_puzzle"]
-	path = triton_puzzle
+[submodule "MLSys/triton_puzzle"]
+	path = MLSys/triton_puzzle
 	url = https://github.com/SiriusNEO/Triton-Puzzles-Lite.git
-[submodule "Gemm/3rdparty/cutlass"]
-	path = Gemm/3rdparty/cutlass
-	url = https://github.com/NVIDIA/cutlass.git
+[submodule "MLSys/Gemm/3rdparty/cutlass"]
+        path = MLSys/Gemm/3rdparty/cutlass
+        url = https://github.com/NVIDIA/cutlass.git
