@@ -9,3 +9,4 @@ git submodule update --init --recursive
 
 - [CUDA Test](./task_cuda)
 - [Triton Test](./triton_puzzle/)
+- [GEMM Test](./Gemm/)
