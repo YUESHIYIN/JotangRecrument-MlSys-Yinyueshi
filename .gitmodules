@@ -1,0 +1,3 @@
+[submodule "triton_puzzle"]
+	path = triton_puzzle
+	url = https://github.com/SiriusNEO/Triton-Puzzles-Lite.git
