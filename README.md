@@ -10,9 +10,10 @@ git submodule update --init --recursive
 
 # ROADMAP
 ## ML
-[TODO]
+- [Image Restoration](https://github.com/JoTang/JotangRecrument/tree/main/%23%201%20ML#task-3---image-restoration)
+- [Pacman](https://github.com/JoTang/JotangRecrument/tree/main/%23%201%20ML#task-5---pacman)
 
 ## MLSys
-- [CUDA Test](./task_cuda)
-- [Triton Test](./triton_puzzle/)
-- [GEMM Test](./Gemm/)
+- [CUDA Test](./# 1 MLSys/task_cuda)
+- [Triton Test](./# 1 MLSys/triton_puzzle/)
+- [GEMM Test](./# 1 MLSys/Gemm/)
