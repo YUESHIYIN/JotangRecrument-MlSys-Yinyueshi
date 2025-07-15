@@ -2,5 +2,5 @@
 	path = MLSys/triton_puzzle
 	url = https://github.com/SiriusNEO/Triton-Puzzles-Lite.git
 [submodule "MLSys/Gemm/3rdparty/cutlass"]
-        path = MLSys/Gemm/3rdparty/cutlass
-        url = https://github.com/NVIDIA/cutlass.git
+	path = MLSys/Gemm/3rdparty/cutlass
+	url = https://github.com/NVIDIA/cutlass.git
