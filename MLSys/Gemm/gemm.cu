@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <cmath>
 
-// 基础的CUDA GEMM kernel - 每个线程计算结果矩阵的一个元素
 __global__ void gemm_baseline_kernel(float *A, float *B, float *C, int M, int N, int K) {
     int row = blockIdx.y * blockDim.y + threadIdx.y;
     int col = blockIdx.x * blockDim.x + threadIdx.x;
@@ -19,14 +18,16 @@ __global__ void gemm_baseline_kernel(float *A, float *B, float *C, int M, int N,
     }
 }
 
-// 初始化矩阵
+__global__ void gemm_kernel(float *A, float *B, float *C, int M, int N, int K) {
+	//TODO: 实现你自己的Kernel
+}
+
 void init_matrix(float *matrix, int size) {
     for (int i = 0; i < size; i++) {
         matrix[i] = static_cast<float>(rand()) / RAND_MAX * 2.0f - 1.0f; // [-1, 1]
     }
 }
 
-// 验证结果正确性 - 简单的CPU实现作为参考
 void cpu_gemm_reference(float *A, float *B, float *C_ref, int M, int N, int K) {
     for (int i = 0; i < M; i++) {
         for (int j = 0; j < N; j++) {
@@ -39,12 +40,11 @@ void cpu_gemm_reference(float *A, float *B, float *C_ref, int M, int N, int K) {
     }
 }
 
-// 验证两个矩阵是否相等
 bool verify_result(float *C1, float *C2, int size, float epsilon = 1e-4f) {
     for (int i = 0; i < size; i++) {
         if (std::abs(C1[i] - C2[i]) > epsilon) {
-            std::cout << "验证失败：位置 " << i << ", GPU=" << C1[i] 
-                     << ", CPU=" << C2[i] << ", 差值=" << std::abs(C1[i] - C2[i]) << std::endl;
+            std::cout << "Failed at " << i << ", GPU=" << C1[i] 
+                     << ", CPU=" << C2[i] << ", diff=" << std::abs(C1[i] - C2[i]) << std::endl;
             return false;
         }
     }
@@ -131,12 +131,7 @@ void GEMM_Baseline(float *A, float *B, float *C, int M, int N, int K) {
 
 int main() {
     test_cutlass();
-    std::cout << "\n=== GEMM Baseline 性能测试 ===\n" << std::endl;
-    
-    // 设置固定随机种子，确保结果可重现
     srand(42);
-    
-    // 测试不同的矩阵大小
     int test_sizes[] = {256, 512, 1024};
     int num_tests = sizeof(test_sizes) / sizeof(test_sizes[0]);
     
@@ -171,10 +166,10 @@ int main() {
         
         // 验证结果正确性
         bool correct = verify_result(C, C_ref, M * N);
-        std::cout << "结果验证: " << (correct ? "通过" : "失败") << std::endl;
+        std::cout << "结果验证: " << (correct ? "\033[1;32m通过\033[0m" : "\033[1;31m失败\033[0m") << std::endl;
         
         if (!correct) {
-            std::cout << "警告：结果不正确，请检查实现！" << std::endl;
+            std::cout << "\033[1;31m警告: 结果不正确, 请检查实现! \033[0m" << std::endl;
         }
         
         // 释放内存
@@ -187,6 +182,7 @@ int main() {
     std::cout << "\n=== 测试完成 ===" << std::endl;
     std::cout << "提示：这是baseline实现，后续优化版本应该与此baseline进行对比" << std::endl;
     std::cout << "加速比 = baseline时间 / 优化版本时间" << std::endl;
-    
+	// TODO: 实现你自己的Kernel，并计算和 Baseline 的加速比
+    GEMM_Kernel(A, B, C, M, N, K);
     return 0;
 }

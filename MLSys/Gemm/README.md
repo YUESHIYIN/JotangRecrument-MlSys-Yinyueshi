@@ -18,6 +18,37 @@ Found xxx CUDA devices
 Device name: NVIDIA xxx PCIe
 Compute capability: 8.0
 ```
+# 调试 CUDA 程序(!!!!!)
+程序调试是
+1. 安装 cuda-gdb：查看自己是否安装完毕
+```bash
+which cuda-gdb
+# /usr/local/cuda/bin/cuda-gdb
+```
+2. 安装 Vscode 插件（默认你是在 Vscode 开发）
+- Vscode 搜索：`Nsight Visual Studio Code Edition`
+- 配置 `.vscode/launch.json`
+```bash
+"configurations": [
+		{
+			"name": "GEMM",
+			"type": "cuda-gdb",
+			"request": "launch",
+			"program": "${workspaceFolder}/MLSys/Gemm/build/gemm_example",
+			"cwd": "${workspaceFolder}/MLSys/Gemm",
+			"environment": [],
+			"stopAtEntry": false,
+			"setupCommands": [
+				{
+					"description": "启用 gdb 的整齐打印",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		}
+	]
+```
+- 开始调试
 
 # 本章节目标
 矩阵乘法是机器学习中最基础且最重要的计算操作之一。本章节的主要目标是：
