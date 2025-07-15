@@ -1,0 +1,18 @@
+[build-system]
+requires = [
+    "setuptools",
+    "wheel",
+    "torch",
+    "pybind11",
+    "ninja"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CUDA_Test"
+version = "0.1.0"
+description = "CUDA Test Extension for PyTorch"
+dependencies = [
+    "torch",
+    "numpy"
+]
