@@ -15,12 +15,13 @@ def test_kernel():
     device = torch.device('cuda')
     print(f"Using CUDA device: {torch.cuda.get_device_name()}")
 
-    test_data = torch.tensor([1.0, 2.0, 3.0, 4.0, 5.0], device=device)
+    A = torch.rand(128, dtype=torch.float32, device=device)
+    B = torch.rand(128, dtype=torch.float32, device=device)
     try:
-        result = CUDA_Test.test_kernel(test_data)
+        result = CUDA_Test.test_kernel(A, B)
         print(f"Output result: {result.tolist()}")
 
-        expected = torch.sum(test_data)
+        expected = A+B
         print(f"Expected result: {expected.tolist()}")
 
         if torch.allclose(result, expected):
