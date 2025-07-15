@@ -15,7 +15,7 @@ set(CUTLASS_ENABLE_TOOLS OFF CACHE BOOL "Enable CUTLASS tools")
 
 add_subdirectory(3rdparty/cutlass)
 
-add_executable(gemm_example gemm.cpp)
+add_executable(gemm_example gemm.cu)
 
 set_target_properties(gemm_example PROPERTIES
     CUDA_SEPARABLE_COMPILATION ON
@@ -37,7 +37,10 @@ target_compile_options(gemm_example PRIVATE
     $<$<COMPILE_LANGUAGE:CUDA>:--use_fast_math>
 )
 
-set_property(TARGET gemm_example PROPERTY CUDA_ARCHITECTURES 75 80 86 89 90)
+if(NOT DEFINED CUDA_ARCHITECTURES)
+    message(FATAL_ERROR "Must specify CUDA architectures via command line! Use: cmake -DCUDA_ARCHITECTURES=\"75;80;86\" ...")
+endif()
+set_property(TARGET gemm_example PROPERTY CUDA_ARCHITECTURES ${CUDA_ARCHITECTURES})
 
 set(CMAKE_BUILD_TYPE Debug)
 target_compile_definitions(gemm_example PRIVATE DEBUG)
