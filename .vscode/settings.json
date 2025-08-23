@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "/home/yys/JotangRecrument-MlSys-Yinyueshi/MLSys/Gemm/3rdparty/cutlass/examples/07_volta_tensorop_gemm",
+    "files.associations": {
+        "core": "cpp"
+    }
+}
