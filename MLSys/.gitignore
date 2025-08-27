@@ -1,0 +1,26 @@
+# 操作系统和IDE生成的文件
+.DS_Store
+.vscode/
+
+# Python 缓存和虚拟环境
+__pycache__/
+*.pyc
+/mlsys-task/
+
+# Jupyter Notebook 缓存
+.ipynb_checkpoints/
+
+# 数据和模型文件 (核心部分！)
+# 忽略所有以 .onnx 结尾的文件
+*.onnx
+# 忽略所有以 .safetensors 或 .pth 结尾的模型权重文件
+*.safetensors
+*.pth
+# 忽略所有名为 .onnx_data 的文件夹
+.onnx_data/
+# 忽略我们所有的缓存和输出文件夹
+/MLSys/model_cache/
+/MLSys/hf_cache/
+/MLSys/llama-onnx/
+/MLSys/final_llama_onnx_output/
+/MLSys/data/
